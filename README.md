@@ -13,15 +13,15 @@ El dataset de partida se puede descargar de Kaggle en el siguiente enlace:
 
 https://www.kaggle.com/fournierp/captcha-version-2-images
 
-El cual contiene imágenes CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart). Construido en 1997 para discrimiar entre usuarios reales y bots, fue remplazado puesto que era vulnerable a algoritmos de inteligencia artificial.
+Contiene imágenes CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart). El algoritmo para generar CAPTCHAs fue creado en 1997, su objetivo era discriminar entre usuarios reales y bots. Fue remplazado posteriormente por ser vulnerable a algoritmos de inteligencia artificial.
 
-Aunque existen formas distintas de abordar el problema (OpenCV con algoritmos basados en NNets) utilizaremos este juego de datos para validar si Pix2Pix tambíen puede realizar la tarea.
+Aunque existen formas distintas de abordar el problema (OpenCV con algoritmos basados en NNets) utilizaremos este juego de datos para validar si Pix2Pix tambíen puede realizar la tarea de descifrar CAPTCHAs.
 
 El dataset contiene únicamente imágenes de partida y el nombre de archivo es el contenido del Captcha.
 
 ![Screenshot](data/samples/226md.jpg)
 
-Modificaciones al dataset:
+Modificaciones realizadas al dataset:
 + El dataset está formado por 1073 imágenes en formato (png y jpg). Se ha descargado en la carpeta [data/samples](data/samples) y realizado una conversión de todas las imágenes a jpg con la utilidad: `mogrify -format jpg *.png`
 
 + Las imagenes están en formato escala de grises, por tanto 1 byte para cada pixel. Las librerías de tensorflow y el algoritmo Pix2Pix  esperan 3 bytes para cada pixel. Se ha desarrollado una pequeña utilidad para convertir a RGB las imágenes [convertRGB.py](data\convertRGB.py):
@@ -66,7 +66,7 @@ En el subdirectorio [data/output](data/output) se pueden encontrar el resultado 
 Evaluación de resultados
 ------------------------
 
-¡Se confirma que el algoritmo de Pix2Pix tiene el potencial necesario para realizar la tarea! Hay simulaciones en las cuales ha conseguido claramente el objetivo. 
+**¡Se confirma que el algoritmo de Pix2Pix tiene el potencial necesario para realizar la tarea!** Hay simulaciones en las cuales ha conseguido claramente el objetivo. 
 
 Es especialmente significativo, la calidad del carácter "n" que tiene una frecuencia de aparición muy alta comparado con el resto de dígitos, que se ven penalizados por un entrenamiento con un dataset pequeño por la limitación de memoria del entorno.
 
@@ -77,7 +77,7 @@ Próximos pasos
 
 Para incrementar la fiabilidad del algoritmo podría trabajarse en tres líneas de actuación:
 + **Incrementar training dataset**: tal como se ha comentado, por limitaciones de memoria en Google Collab Research no se ha podido entrenar la red neuronal con el 80% del juego de pruebas. Un entorno de ejecución local, por ejemplo con la targeta del reto, permitiría mejorar las predicciones. Como opción alternativa, existe la posibilidad de configurar un entorno en Google Cloud con Tensorflow 2.0.0
+
 + **Mejorar el conjunto de imagenes de Captchas**: para conseguir un buen resultado de decodificación, no únicamente importa un buen volumen de imágenes, también se requiere un volumen mínimo de todos los dígitos del juego de datos. Se observa, que el dataset no tiene una distribución homogenea, tal como comenta [vykstorm](https://www.kaggle.com/vykstorm) en los comentarios al dataset original. ![distribucion](https://i.imgur.com/0df4KxX.png)
+
 + **Mejorar el preprocesamiento/arquitectura de la red**: las imágenes tienen un formato no cuadrado. Como próximo paso se debería evaluar el comportamiento de la red escalando las imágenes sin deformarlas, añadiendo pixeles en blanco o utilizando máscaras de contenido. También se podrían adaptar las capas del generador / discriminador para trabajar con imágenes no cuadradas.
-
-
