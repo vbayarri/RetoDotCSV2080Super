@@ -63,5 +63,21 @@ En el subdirectorio [data/output](data/output) se pueden encontrar el resultado 
 | ![data/samples/bc8nf.jpg](data/samples/bc8nf.jpg) | ![data/target/bc8nf.jpg](data/target/bc8nf.jpg) | ![](data/output/Size20Epoch100/4_25.jpg) | ![](data/output/Size20Epoch100/4_50.jpg) | ![](data/output/Size20Epoch100/4_75.jpg) | ![](data/output/Size20Epoch100/4_99.jpg) |
 | ![data/samples/2bg48.jpg](data/samples/2bg48.jpg) | ![data/target/2bg48.jpg](data/target/2bg48.jpg) | ![](data/output/Size20Epoch100/5_25.jpg) | ![](data/output/Size20Epoch100/5_50.jpg) | ![](data/output/Size20Epoch100/5_75.jpg) | ![](data/output/Size20Epoch100/5_99.jpg) |
 
+Evaluación de resultados
+------------------------
+
+¡Se confirma que el algoritmo de Pix2Pix tiene el potencial necesario para realizar la tarea! Hay simulaciones en las cuales ha conseguido claramente el objetivo. 
+
+Es especialmente significativo, la calidad del carácter "n" que tiene una frecuencia de aparición muy alta comparado con el resto de dígitos, que se ven penalizados por un entrenamiento con un dataset pequeño por la limitación de memoria del entorno.
+
+A continuación se proponen próximos pasos para mejorar la calidad del algoritmo. 
+
+Próximos pasos
+--------------
+
+Para incrementar la fiabilidad del algoritmo podría trabajarse en tres líneas de actuación:
++ **Incrementar training dataset**: tal como se ha comentado, por limitaciones de memoria en Google Collab Research no se ha podido entrenar la red neuronal con el 80% del juego de pruebas. Un entorno de ejecución local, por ejemplo con la targeta del reto, permitiría mejorar las predicciones. Como opción alternativa, existe la posibilidad de configurar un entorno en Google Cloud con Tensorflow 2.0.0
++ **Mejorar el conjunto de imagenes de Captchas**: para conseguir un buen resultado de decodificación, no únicamente importa un buen volumen de imágenes, también se requiere un volumen mínimo de todos los dígitos del juego de datos. Se observa, que el dataset no tiene una distribución homogenea, tal como comenta [vykstorm](https://www.kaggle.com/vykstorm) en los comentarios al dataset original. ![distribucion](https://i.imgur.com/0df4KxX.png)
++ **Mejorar el preprocesamiento/arquitectura de la red**: las imágenes tienen un formato no cuadrado. Como próximo paso se debería evaluar el comportamiento de la red escalando las imágenes sin deformarlas, añadiendo pixeles en blanco o utilizando máscaras de contenido. También se podrían adaptar las capas del generador / discriminador para trabajar con imágenes no cuadradas.
 
 
