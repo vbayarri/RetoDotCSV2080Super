@@ -58,17 +58,11 @@ En el subdirectorio [data/output](data/output) se pueden encontrar el resultado 
 
 | Imagen Original | Imagen Objetivo | Imagen 25 epoch | Imagen 50 epoch | Imagen 75 epoch | Imagen 100 epoch |
 | --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
-| --------------- | --------------- | ![](data/output/Size20Epoch100/1_25.jpg) | --------------- | --------------- | ---------------- |
-| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
-| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
-| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
-| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
-
-| TITULO1| TITULO2|
-
-| ----- | ---- |
-
-| CONTENIDO COLUMNA 1 | CONTENIDO COLUMNA 2 |
+| ![data/samples/xxbn8.jpg](data/samples/xxbn8.jpg) | ![data/target/xxbn8.jpg](data/target/xxbn8.jpg) | ![](data/output/Size20Epoch100/1_25.jpg) | ![](data/output/Size20Epoch100/1_50.jpg) | ![](data/output/Size20Epoch100/1_75.jpg) | ![](data/output/Size20Epoch100/1_99.jpg) |
+| --------------- | --------------- | ![](data/output/Size20Epoch100/2_25.jpg) | ![](data/output/Size20Epoch100/2_50.jpg) | ![](data/output/Size20Epoch100/2_75.jpg) | ![](data/output/Size20Epoch100/2_99.jpg) |
+| ![data/samples/ny3nn.jpg](data/samples/ny3nn.jpg) | ![data/target/ny3nn.jpg](data/target/ny3nn.jpg) | ![](data/output/Size20Epoch100/3_25.jpg) | ![](data/output/Size20Epoch100/3_50.jpg) | ![](data/output/Size20Epoch100/3_75.jpg) | ![](data/output/Size20Epoch100/3_99.jpg) |
+| ![data/samples/bc8nf.jpg](data/samples/bc8nf.jpg) | ![data/target/bc8nf.jpg](data/target/bc8nf.jpg) | ![](data/output/Size20Epoch100/4_25.jpg) | ![](data/output/Size20Epoch100/4_50.jpg) | ![](data/output/Size20Epoch100/4_75.jpg) | ![](data/output/Size20Epoch100/4_99.jpg) |
+| ![data/samples/2bg48.jpg](data/samples/2bg48.jpg) | ![data/target/2bg48.jpg](data/target/2bg48.jpg) | ![](data/output/Size20Epoch100/5_25.jpg) | ![](data/output/Size20Epoch100/5_50.jpg) | ![](data/output/Size20Epoch100/5_75.jpg) | ![](data/output/Size20Epoch100/5_99.jpg) |
 
 
 
