@@ -13,33 +13,54 @@ El dataset de partida se puede descargar de Kaggle en el siguiente enlace:
 
 https://www.kaggle.com/fournierp/captcha-version-2-images
 
-El dataset contiene imágenes CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart). Construido en 1997 para discrimiar entre usuarios reales y bots, fue remplazado puesto que era vulnerable a algoritmos de inteligencia artificial.
+El cual contiene imágenes CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart). Construido en 1997 para discrimiar entre usuarios reales y bots, fue remplazado puesto que era vulnerable a algoritmos de inteligencia artificial.
 
-Aunque existen formas distintas de abordar el problema (OpenCV con algoritmos basados en NNets) utilizaremos el dataset para validar si Pix2Pix tambíen puede realizar la tarea.
+Aunque existen formas distintas de abordar el problema (OpenCV con algoritmos basados en NNets) utilizaremos este juego de datos para validar si Pix2Pix tambíen puede realizar la tarea.
 
 El dataset contiene únicamente imágenes de partida y el nombre de archivo es el contenido del Captcha.
 
-![Screenshot](https://storage.googleapis.com/kagglesdsdata/datasets%2F38019%2F306654%2Fsamples%2Fsamples%2F226md.png?GoogleAccessId=datasets-dataviewer@kaggle-161607.iam.gserviceaccount.com&Expires=1568496315&Signature=NcZwntKzYguhdy0pzBUbeZ3TxpRgjdK4QShqZ8Hv9OWo8NsE0nlgdcGEYxOLGCILBJg2NxLMrboe30h0vRDV0AJI1NwwxkAytaiUzHQAJUNsJ3qQAjFD%2BhYbo%2B5mRmCaSg42BOEjOVtk032aah84x6Jp7fKo8FgoSO5zY%2FK%2F%2BX7g9Db9dJNoWtW%2FrYDhMd3CM02EUpUsffdqMX8TEAPl3SXSaXS0EH4fmUq8VsTFOIPxLqaZj8ZS77eNJ4UqVMJ75SmFo0YltZDwt3saB2n%2B99f8n4kAXr2zt5auyCj9PaohPchfPe%2FyXZdDtw%2FzHeNOA4PIbeOXD%2B3bliI2a%2BaC6Q%3D%3D)
+![Screenshot](data/samples/226md.jpg)
+
+Modificaciones al dataset:
++ El dataset está formado por 1073 imágenes en formato (png y jpg). Se ha descargado en la carpeta [data/samples](data/samples) y realizado una conversión de todas las imágenes a jpg con la utilidad: `mogrify -format jpg *.png`
+
++ Las imagenes están en formato escala de grises, por tanto 1 byte para cada pixel. Las librerías de tensorflow y el algoritmo Pix2Pix  esperan 3 bytes para cada pixel. Se ha desarrollado una pequeña utilidad para convertir a RGB las imágenes [convertRGB.py](data\convertRGB.py):
+
+Las imágenes convertidas que se utilizarán para el entrenamiento, están ubicadas en el directorio [data/samplesRGB](data/samplesRGB)
 
 Estrategia
 ----------
 
-Pix2Pix requiere dos imágenes para funcionar, por tanto, el primer punto a resolver es la generación de imágenes destino para cada imagen origen.
+Pix2Pix requiere dos imágenes para funcionar, por tanto, el primer reto a resolver es la generación de imágenes destino para cada imagen origen.
 
-Para ello, se ha generado un pequeño programa s
+Para ello, se ha generado un pequeño programa en python que genera imágenes destino:
++ Con el mismo tamaño que las imágenes de entrada
++ Utilizando una fuente similar a la utilizada por Google (Arial). Debe estar instalada en el equipo y el programa hace referencia a la misma en la carpeta de fuentes.
++ Ubicando el captcha resuelto en la misma zona de la imagen de las imágenes de prueba.
+
+El programa se encuentra en el siguiente enlace: [generateTarget.py](data/generateTarget.py)
+
+Las imágenes objetivo se encuentran en la carpeta [data/target](data/target).
+
+Por ejemplo, para la imagen anterior 226md, se ha generado la siguiente imagen objetivo, aquella que deseamos obtener con el algoritmo Pix2Pix:
+
+![data/samples/226md.jpg](data/samples/226md.jpg)
+![data/target/226md.jpg](data/target/226md.jpg)
+
+Ejecución
+---------
+
+La simulación se ha realizado a partir del código del capítulo de DOTCSV con una clara explicación del algoritmo y los fuentes originales del artículo: [Generando flores realistas con IA](www.youtube.com%2Fwatch%3Fv%3DYsrMGcgfETY&usg=AOvVaw2EhzgOGfuTM_-L4TGhGbBj)
+
+La dificultad principal ha sido ejecutar el código en Google Research Collab, puesto que la instancia no tenía suficiente memoria para ejecutar el entrenamiento sobre el total del dataset disponible. Tras varias pruebas, se ha conseguido ejecutar con un tamaño del dataset del 20% (215 imágenes) sin tener problemas de rendimiento. En el código tambien se ha forzado entre epochs a Python a realizar limpieza de memoria. 
+
+En el subdirectorio [data/output](data/output) se pueden encontrar el resultado de dos simulaciones ejecutadas durante 20 y 100 epochs respectivamente.
+
+| TITULO1| TITULO2|
+
+| ----- | ---- |
+
+| CONTENIDO COLUMNA 1 | CONTENIDO COLUMNA 2 |
 
 
-
-Built in 1997 as way for users to identify and block bots (in order to prevent spam, DDOS etc.). They have since then been replace by reCAPTCHA because they are breakable using Artificial Intelligence (as I encourage you to do).
-
-Así se crean secciones y subsecciones. Para crear una enumeración utilizamos:
-+ Elemento 1
-+ Elemento 2
-+ Elemento 3
-
-Dataset
--------
-
-Dataset
--------
 
