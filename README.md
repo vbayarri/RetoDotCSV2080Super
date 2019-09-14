@@ -56,6 +56,14 @@ La dificultad principal ha sido ejecutar el código en Google Research Collab, p
 
 En el subdirectorio [data/output](data/output) se pueden encontrar el resultado de dos simulaciones ejecutadas durante 20 y 100 epochs respectivamente.
 
+| Imagen Original | Imagen Objetivo | Imagen 25 epoch | Imagen 50 epoch | Imagen 75 epoch | Imagen 100 epoch |
+| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
+| --------------- | --------------- | ![](data/output/Size20Epoch100/1_25.jpg) | --------------- | --------------- | ---------------- |
+| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
+| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
+| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
+| --------------- | --------------- | --------------- | --------------- | --------------- | ---------------- |
+
 | TITULO1| TITULO2|
 
 | ----- | ---- |
